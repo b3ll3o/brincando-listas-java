@@ -2,13 +2,16 @@ package br.com.leo;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Curso {
 
 	private String nome;
 	private String instrutor;
 	private List<Aula> aulas = new ArrayList<Aula>();
+	private Set<Aluno> alunos = new HashSet<>();
 
 	public Curso(String nome, String instrutor) {
 		this.nome = nome;
@@ -38,5 +41,13 @@ public class Curso {
 	@Override
 	public String toString() {
 		return "{Curso: " + nome + ", tempo total: " + getTempoTotal() + " minutos, aulas: " + aulas + "}";
+	}
+	
+	public void matricula(Aluno aluno) {
+		alunos.add(aluno);
+	}
+	
+	public Set<Aluno> getAlunos() {
+		return Collections.unmodifiableSet(alunos);
 	}
 }
